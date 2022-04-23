@@ -1,5 +1,7 @@
 package com.uda.gestorreclamos.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,5 +23,6 @@ public class IssueType {
     private String name;
 
     @OneToMany(mappedBy="issueType")
+    @JsonBackReference
     private Set<Issue> issues;
 }

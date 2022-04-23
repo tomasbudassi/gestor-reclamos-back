@@ -1,4 +1,13 @@
 package com.uda.gestorreclamos.services;
 
-public interface IssueService {
+import java.util.List;
+
+public interface IssueService<Issue> {
+    List<Issue> getAll();
+
+    Issue getById(Integer id);
+
+    Issue update(Integer id, Issue issue);
+
+    void deleteById(Integer id);
 }

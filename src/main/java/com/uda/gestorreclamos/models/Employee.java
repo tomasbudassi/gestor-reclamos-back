@@ -1,5 +1,6 @@
 package com.uda.gestorreclamos.models;
 
+import com.fasterxml.jackson.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,5 +25,6 @@ public class Employee {
     private String lastname;
 
     @OneToMany(mappedBy="employee")
+    @JsonIgnoreProperties("employee")
     private Set<Issue> issues;
 }
