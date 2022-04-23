@@ -21,13 +21,14 @@ public class Issue {
     private String title;
     private String status;
     private String description;
-    private String type;
     private float lat;
     private float longt;
+
+    @Column(length = 99999)
     private String imageUrl64;
 
     @ManyToOne
-    @JoinColumn(name = "issue_code_id")
+    @JoinColumn(name = "type_code_id")
     @JsonIgnore
     private IssueCode issueCode;
 
