@@ -18,7 +18,6 @@ public class Issue {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String title;
     private String status;
     private String description;
     private float lat;
@@ -28,9 +27,9 @@ public class Issue {
     private String imageUrl64;
 
     @ManyToOne
-    @JoinColumn(name = "type_code_id")
+    @JoinColumn(name = "type_id")
     @JsonIgnore
-    private IssueCode issueCode;
+    private IssueType issueType;
 
     @ManyToOne
     @JoinColumn(name = "employee_id")

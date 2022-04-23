@@ -11,8 +11,8 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "issue_code")
-public class IssueCode {
+@Table(name = "issue_type")
+public class IssueType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +20,6 @@ public class IssueCode {
 
     private String name;
 
-    @OneToMany(mappedBy="issueCode")
+    @OneToMany(mappedBy="issueType")
     private Set<Issue> issues;
 }
