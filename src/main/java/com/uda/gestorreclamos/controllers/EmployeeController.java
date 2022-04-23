@@ -1,7 +1,8 @@
 package com.uda.gestorreclamos.controllers;
 
 import com.uda.gestorreclamos.models.Employee;
-import com.uda.gestorreclamos.services.impl.EmployeeServiceImpl;
+import com.uda.gestorreclamos.services.EmployeeService;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,13 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@AllArgsConstructor
 @RequestMapping("/empleado")
 public class EmployeeController {
-    private final EmployeeServiceImpl EMPLOYEE_SERVICE;
 
-    EmployeeController(EmployeeServiceImpl employeeService) {
-        this.EMPLOYEE_SERVICE = employeeService;
-    }
+    private final EmployeeService EMPLOYEE_SERVICE;
 
     @GetMapping("")
     public List<Employee> getAll() {

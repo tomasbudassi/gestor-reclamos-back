@@ -1,5 +1,6 @@
 package com.uda.gestorreclamos.services.impl;
 
+import com.uda.gestorreclamos.dtos.IssueResponseDTO;
 import com.uda.gestorreclamos.models.Issue;
 import com.uda.gestorreclamos.repositories.EmployeeRepository;
 import com.uda.gestorreclamos.repositories.IssueRepository;
@@ -8,6 +9,7 @@ import com.uda.gestorreclamos.services.IssueService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class IssueServiceImpl implements IssueService {
@@ -25,8 +27,10 @@ public class IssueServiceImpl implements IssueService {
     }
 
     @Override
-    public List<Issue> getAll() {
-        return (List<Issue>) ISSUE_REPOSITORY.findAll();
+    public List<IssueResponseDTO> getAll() {
+
+        List<Issue> issues = (List<Issue>) ISSUE_REPOSITORY.findAll();
+        return issues.stream().map(issue -> IssueResponseDTO.issueToResponseDto(issue)).collect(Collectors.toList());
     }
 
     @Override
@@ -38,7 +42,7 @@ public class IssueServiceImpl implements IssueService {
     }
 
     @Override
-    public Object update(Integer id, Object o) {
+    public Issue update(Integer id, Issue issue) {
         return null;
     }
 

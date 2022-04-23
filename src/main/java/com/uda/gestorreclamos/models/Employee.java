@@ -25,6 +25,6 @@ public class Employee {
     private String lastname;
 
     @OneToMany(mappedBy="employee")
-    @JsonIgnoreProperties("employee")
+    @JsonIgnore
     private Set<Issue> issues;
 }

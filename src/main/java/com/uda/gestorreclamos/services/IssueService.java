@@ -1,9 +1,12 @@
 package com.uda.gestorreclamos.services;
 
+import com.uda.gestorreclamos.dtos.IssueResponseDTO;
+import com.uda.gestorreclamos.models.Issue;
+
 import java.util.List;
 
-public interface IssueService<Issue> {
-    List<Issue> getAll();
+public interface IssueService {
+    List<IssueResponseDTO> getAll();
 
     Issue getById(Integer id);
 
