@@ -30,7 +30,7 @@ public class IssueServiceImpl implements IssueService {
     public List<IssueResponseDTO> getAll() {
 
         List<Issue> issues = (List<Issue>) ISSUE_REPOSITORY.findAll();
-        return issues.stream().map(issue -> IssueResponseDTO.issueToResponseDto(issue)).collect(Collectors.toList());
+        return issues.stream().map(issue -> IssueResponseDTO.toMap(issue)).collect(Collectors.toList());
     }
 
     @Override

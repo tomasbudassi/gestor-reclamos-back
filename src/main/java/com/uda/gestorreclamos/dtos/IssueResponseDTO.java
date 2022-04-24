@@ -22,7 +22,7 @@ public class IssueResponseDTO {
     private IssueType issueType;
     private Employee employee;
 
-    public static IssueResponseDTO issueToResponseDto(Issue issue) {
+    public static IssueResponseDTO toMap(Issue issue) {
         return IssueResponseDTO.builder()
                 .id(issue.getId())
                 .status(issue.getStatus())
