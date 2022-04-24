@@ -1,6 +1,6 @@
 package com.uda.gestorreclamos.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,11 +28,12 @@ public class Issue {
 
     @ManyToOne
     @JoinColumn(name = "type_id")
-    @JsonIgnore
+    @JsonIgnoreProperties("issues")
     private IssueType issueType;
 
     @ManyToOne
     @JoinColumn(name = "employee_id")
-    @JsonIgnore
+    @JsonIgnoreProperties("issues")
     private Employee employee;
+
 }
