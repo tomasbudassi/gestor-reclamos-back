@@ -8,6 +8,12 @@ import java.util.List;
 public interface IssueService {
     List<IssueResponseDTO> getAll();
 
+    List<IssueResponseDTO> getAllWithoutCloses(String status);
+
+    List<IssueResponseDTO> getByStatus(String status);
+
+    Issue insert(Issue issue);
+
     Issue getById(Integer id);
 
     Issue update(Integer id, Issue issue);
