@@ -23,6 +23,7 @@ public class Employee {
     private String password;
     private String name;
     private String lastname;
+    private String type;
 
     @OneToMany(mappedBy="employee")
     @JsonIgnore

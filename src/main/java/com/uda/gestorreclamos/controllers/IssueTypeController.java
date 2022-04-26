@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/tipo_reclamo")
+@RequestMapping("/tipos_reclamo")
 public class IssueTypeController {
 
     private final IssueTypeService ISSUE_TYPE_SERVICE;
