@@ -3,18 +3,16 @@ package com.uda.gestorreclamos.services.impl;
 import com.uda.gestorreclamos.models.Employee;
 import com.uda.gestorreclamos.repositories.EmployeeRepository;
 import com.uda.gestorreclamos.services.EmployeeService;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@AllArgsConstructor
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
     private final EmployeeRepository EMPLOYEE_REPOSITORY;
-
-    public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
-        this.EMPLOYEE_REPOSITORY = employeeRepository;
-    }
 
     @Override
     public List<Employee> getAll() {

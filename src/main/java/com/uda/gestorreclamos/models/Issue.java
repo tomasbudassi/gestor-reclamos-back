@@ -20,8 +20,8 @@ public class Issue {
 
     private String status;
     private String description;
-    private float lat;
-    private float longt;
+    private String lat;
+    private String longt;
 
     @Column(length = 99999)
     private String imageUrl64;
