@@ -8,6 +8,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -17,8 +19,8 @@ public class IssueResponseDTO {
     private Integer id;
     private String status;
     private String description;
-    private float lat;
-    private float longt;
+    private BigDecimal lat;
+    private BigDecimal longt;
     private IssueType issueType;
     private Employee employee;
 
@@ -27,8 +29,8 @@ public class IssueResponseDTO {
                 .id(issue.getId())
                 .status(issue.getStatus())
                 .description(issue.getDescription())
-                .lat(issue.getLat())
-                .longt(issue.getLongt())
+                .lat(new BigDecimal(issue.getLat()))
+                .longt(new BigDecimal(issue.getLongt()))
                 .issueType(issue.getIssueType())
                 .employee(issue.getEmployee())
                 .build();

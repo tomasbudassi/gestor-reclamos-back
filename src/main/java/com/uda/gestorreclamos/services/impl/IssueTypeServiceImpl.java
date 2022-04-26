@@ -3,18 +3,16 @@ package com.uda.gestorreclamos.services.impl;
 import com.uda.gestorreclamos.models.IssueType;
 import com.uda.gestorreclamos.repositories.IssueTypeRepository;
 import com.uda.gestorreclamos.services.IssueTypeService;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@AllArgsConstructor
 @Service
 public class IssueTypeServiceImpl implements IssueTypeService {
 
     private final IssueTypeRepository ISSUE_TYPE_REPOSITORY;
-
-    public IssueTypeServiceImpl(IssueTypeRepository issueTypeRepository) {
-        this.ISSUE_TYPE_REPOSITORY = issueTypeRepository;
-    }
 
     @Override
     public List<IssueType> getAll() {
