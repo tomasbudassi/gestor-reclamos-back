@@ -27,6 +27,23 @@ public class IssueServiceImpl implements IssueService {
     }
 
     @Override
+    public List<IssueResponseDTO> getAllWithoutCloses(String status) {
+        List<Issue> issues = (List<Issue>) ISSUE_REPOSITORY.findByStatusNot(status);
+        return issues.stream().map(issue -> IssueResponseDTO.toMap(issue)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<IssueResponseDTO> getByStatus(String status) {
+        List<Issue> issues = (List<Issue>) ISSUE_REPOSITORY.findByStatusContainsIgnoreCase(status);
+        return issues.stream().map(issue -> IssueResponseDTO.toMap(issue)).collect(Collectors.toList());
+    }
+
+    @Override
+    public Issue insert(Issue issue) {
+        return ISSUE_REPOSITORY.save(issue);
+    }
+
+    @Override
     public Issue getById(Integer id) {
         Issue issue = ISSUE_REPOSITORY.findById(id).orElse(null);
         return issue;
@@ -39,6 +56,6 @@ public class IssueServiceImpl implements IssueService {
 
     @Override
     public void deleteById(Integer id) {
-
+        ISSUE_REPOSITORY.deleteById(id);
     }
 }
