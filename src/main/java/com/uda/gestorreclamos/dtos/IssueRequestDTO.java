@@ -16,12 +16,9 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 public class IssueRequestDTO {
 
-    private Integer id;
-
     @NotEmpty(message = "El estado del reclamo no puede estar vacio")
     private String status;
 
-    @NotEmpty(message = "La descripcion del reclamo no puede estar vacio")
     private String description;
 
     @NotEmpty(message = "La latitud del reclamo no puede estar vacio")
@@ -32,12 +29,11 @@ public class IssueRequestDTO {
 
     private String imageUrl64;
 
-    @NotNull(message = "El reclamo debe tener un estado")
+    @NotNull(message = "El tipo del reclamo no puede estar vacio")
     private IssueType issueType;
 
     public static Issue toEntity(IssueRequestDTO issueDto) {
         return Issue.builder()
-                .id(issueDto.getId())
                 .status(issueDto.getStatus())
                 .description(issueDto.getDescription())
                 .lat(issueDto.getLat())
