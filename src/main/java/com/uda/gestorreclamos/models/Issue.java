@@ -2,6 +2,7 @@ package com.uda.gestorreclamos.models;
 
 import com.fasterxml.jackson.annotation.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Table(name = "issue")
 public class Issue {
 
