@@ -1,5 +1,6 @@
 package com.uda.gestorreclamos.services;
 
+import com.uda.gestorreclamos.dtos.IssueRequestDTO;
 import com.uda.gestorreclamos.dtos.IssueResponseDTO;
 import com.uda.gestorreclamos.models.Issue;
 
@@ -12,11 +13,12 @@ public interface IssueService {
 
     List<IssueResponseDTO> getByStatus(String status);
 
-    Issue insert(Issue issue);
+    Issue insert(IssueRequestDTO issue);
 
     Issue getById(Integer id);
 
     Issue update(Integer id, Issue issue);
 
     void deleteById(Integer id);
+
 }

@@ -1,5 +1,6 @@
 package com.uda.gestorreclamos.services.impl;
 
+import com.uda.gestorreclamos.dtos.IssueRequestDTO;
 import com.uda.gestorreclamos.dtos.IssueResponseDTO;
 import com.uda.gestorreclamos.models.Issue;
 import com.uda.gestorreclamos.repositories.EmployeeRepository;
@@ -23,7 +24,24 @@ public class IssueServiceImpl implements IssueService {
     @Override
     public List<IssueResponseDTO> getAll() {
         List<Issue> issues = (List<Issue>) ISSUE_REPOSITORY.findAll();
-        return issues.stream().map(issue -> IssueResponseDTO.toMap(issue)).collect(Collectors.toList());
+        return issues.stream().map(issue -> IssueResponseDTO.toDto(issue)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<IssueResponseDTO> getAllWithoutCloses(String status) {
+        List<Issue> issues = ISSUE_REPOSITORY.findByStatusNot(status);
+        return issues.stream().map(issue -> IssueResponseDTO.toDto(issue)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<IssueResponseDTO> getByStatus(String status) {
+        List<Issue> issues = ISSUE_REPOSITORY.findByStatusContainsIgnoreCase(status);
+        return issues.stream().map(issue -> IssueResponseDTO.toDto(issue)).collect(Collectors.toList());
+    }
+
+    @Override
+    public Issue insert(IssueRequestDTO issueDto) {
+        return ISSUE_REPOSITORY.save(IssueRequestDTO.toEntity(issueDto));
     }
 
     @Override
