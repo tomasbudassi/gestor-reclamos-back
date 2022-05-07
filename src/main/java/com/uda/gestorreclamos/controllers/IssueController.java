@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+import static com.uda.gestorreclamos.utils.Constants.STATUS_CERRADO;
+
 @RestController
 @AllArgsConstructor
 @RequestMapping("/reclamos")
@@ -25,7 +27,7 @@ public class IssueController {
 
     @GetMapping("")
     public List<IssueResponseDTO> getAllWithoutCloses() {
-        return ISSUE_SERVICE.getAllWithoutCloses("Cerrado");
+        return ISSUE_SERVICE.getAllWithoutCloses(STATUS_CERRADO);
     }
 
     @GetMapping("/estado/{status}")
