@@ -19,8 +19,12 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @JsonIgnore
     private String username;
+
+    @JsonIgnore
     private String password;
+
     private String name;
     private String lastname;
     private String type;
