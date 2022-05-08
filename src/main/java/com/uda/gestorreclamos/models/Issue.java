@@ -28,6 +28,8 @@ public class Issue {
     @Column(length = 99999)
     private String imageUrl64;
 
+    private String observation;
+
     @ManyToOne
     @JoinColumn(name = "type_id")
     @JsonIgnoreProperties("issues")

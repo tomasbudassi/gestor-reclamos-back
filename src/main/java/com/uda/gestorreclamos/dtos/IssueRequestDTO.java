@@ -32,6 +32,8 @@ public class IssueRequestDTO {
     @NotNull(message = "El tipo del reclamo no puede estar vacio")
     private IssueType issueType;
 
+    private String observation;
+
     public static Issue toEntity(IssueRequestDTO issueDto) {
         return Issue.builder()
                 .status(issueDto.getStatus())
@@ -39,6 +41,7 @@ public class IssueRequestDTO {
                 .lat(issueDto.getLat())
                 .longt(issueDto.getLongt())
                 .issueType(issueDto.getIssueType())
+                .observation(issueDto.getObservation())
                 .build();
     }
 }
