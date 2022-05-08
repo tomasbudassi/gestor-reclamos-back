@@ -23,6 +23,7 @@ public class IssueResponseDTO {
     private BigDecimal longt;
     private IssueType issueType;
     private Employee employee;
+    private String observation;
 
     public static IssueResponseDTO toDto(Issue issue) {
         return IssueResponseDTO.builder()
@@ -33,6 +34,7 @@ public class IssueResponseDTO {
                 .longt(new BigDecimal(issue.getLongt()))
                 .issueType(issue.getIssueType())
                 .employee(issue.getEmployee())
+                .observation(issue.getObservation())
                 .build();
     }
 }

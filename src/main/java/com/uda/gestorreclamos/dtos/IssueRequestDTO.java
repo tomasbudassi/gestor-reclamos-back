@@ -1,5 +1,6 @@
 package com.uda.gestorreclamos.dtos;
 
+import com.uda.gestorreclamos.models.Employee;
 import com.uda.gestorreclamos.models.Issue;
 import com.uda.gestorreclamos.models.IssueType;
 import lombok.AllArgsConstructor;
@@ -32,6 +33,8 @@ public class IssueRequestDTO {
     @NotNull(message = "El tipo del reclamo no puede estar vacio")
     private IssueType issueType;
 
+    private Employee employee;
+
     private String observation;
 
     public static Issue toEntity(IssueRequestDTO issueDto) {
@@ -41,6 +44,7 @@ public class IssueRequestDTO {
                 .lat(issueDto.getLat())
                 .longt(issueDto.getLongt())
                 .issueType(issueDto.getIssueType())
+                .employee(issueDto.getEmployee())
                 .observation(issueDto.getObservation())
                 .build();
     }
