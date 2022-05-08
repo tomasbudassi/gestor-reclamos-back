@@ -7,6 +7,7 @@ import com.uda.gestorreclamos.models.Issue;
 import java.util.List;
 
 public interface IssueService {
+
     List<IssueResponseDTO> getAll();
 
     List<IssueResponseDTO> getAllWithoutCloses(String status);
@@ -17,7 +18,7 @@ public interface IssueService {
 
     Issue getById(Integer id);
 
-    Issue update(Integer id, Issue issue);
+    Issue update(Integer id, IssueRequestDTO issue) throws Exception;
 
     void deleteById(Integer id);
 

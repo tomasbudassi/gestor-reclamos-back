@@ -35,20 +35,24 @@ public class IssueController {
         return ISSUE_SERVICE.getByStatus(status);
     }
 
-    @PostMapping("")
-    public Issue newIssue(@Valid @RequestBody IssueRequestDTO newIssue) {
-        return ISSUE_SERVICE.insert(newIssue);
-    }
-
     @GetMapping("/{id}")
     public Issue getById(@PathVariable Integer id) {
         return ISSUE_SERVICE.getById(id);
     }
 
+    @PostMapping("")
+    public Issue newIssue(@Valid @RequestBody IssueRequestDTO newIssue) {
+        return ISSUE_SERVICE.insert(newIssue);
+    }
+
+    @PutMapping("/{id}")
+    public Issue update(@PathVariable Integer id, @Valid @RequestBody IssueRequestDTO issue) throws Exception {
+        return ISSUE_SERVICE.update(id, issue);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteIssue(@PathVariable Integer id) {
         ISSUE_SERVICE.deleteById(id);
-
         return ResponseEntity.noContent().build();
     }
 }

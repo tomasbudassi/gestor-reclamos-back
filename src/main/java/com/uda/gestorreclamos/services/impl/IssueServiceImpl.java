@@ -51,8 +51,15 @@ public class IssueServiceImpl implements IssueService {
     }
 
     @Override
-    public Issue update(Integer id, Issue issue) {
-        return null;
+    public Issue update(Integer id, IssueRequestDTO issueDto) throws Exception {
+
+        if(getById(id) == null) {
+            throw new Exception("El id de reclamo ingresado no existe");
+        }
+
+        Issue issue = IssueRequestDTO.toEntity(issueDto);
+        issue.setId(id);
+        return ISSUE_REPOSITORY.save(issue);
     }
 
     @Override
