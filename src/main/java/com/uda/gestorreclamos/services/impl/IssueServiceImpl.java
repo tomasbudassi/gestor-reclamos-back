@@ -2,6 +2,7 @@ package com.uda.gestorreclamos.services.impl;
 
 import com.uda.gestorreclamos.dtos.IssueRequestDTO;
 import com.uda.gestorreclamos.dtos.IssueResponseDTO;
+import com.uda.gestorreclamos.dtos.IssueUpdateRequestDTO;
 import com.uda.gestorreclamos.models.Issue;
 import com.uda.gestorreclamos.repositories.EmployeeRepository;
 import com.uda.gestorreclamos.repositories.IssueRepository;
@@ -51,13 +52,15 @@ public class IssueServiceImpl implements IssueService {
     }
 
     @Override
-    public Issue update(Integer id, IssueRequestDTO issueDto) throws Exception {
+    public Issue update(Integer id, IssueUpdateRequestDTO issueDto) throws Exception {
 
-        if(getById(id) == null) {
+        Issue issue = getById(id);
+
+        if(issue == null) {
             throw new Exception("El id de reclamo ingresado no existe");
         }
 
-        Issue issue = IssueRequestDTO.toEntity(issueDto);
+        issue = IssueUpdateRequestDTO.toEntity(issue, issueDto);
         issue.setId(id);
         return ISSUE_REPOSITORY.save(issue);
     }

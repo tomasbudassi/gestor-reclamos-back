@@ -2,6 +2,7 @@ package com.uda.gestorreclamos.controllers;
 
 import com.uda.gestorreclamos.dtos.IssueRequestDTO;
 import com.uda.gestorreclamos.dtos.IssueResponseDTO;
+import com.uda.gestorreclamos.dtos.IssueUpdateRequestDTO;
 import com.uda.gestorreclamos.models.Issue;
 import com.uda.gestorreclamos.services.IssueService;
 import lombok.AllArgsConstructor;
@@ -46,7 +47,7 @@ public class IssueController {
     }
 
     @PutMapping("/{id}")
-    public Issue update(@PathVariable Integer id, @Valid @RequestBody IssueRequestDTO issue) throws Exception {
+    public Issue update(@PathVariable Integer id, @RequestBody IssueUpdateRequestDTO issue) throws Exception {
         return ISSUE_SERVICE.update(id, issue);
     }
 
