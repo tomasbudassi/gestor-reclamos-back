@@ -11,4 +11,6 @@ public interface IssueRepository extends CrudRepository<Issue, Integer> {
     List<Issue> findByStatusNot(String status);
 
     List<Issue> findByStatusContainsIgnoreCase(String status);
+
+    List<Issue> findByEmployeeId(Integer id);
 }
