@@ -15,6 +15,8 @@ public interface IssueService {
 
     List<IssueResponseDTO> getByStatus(String status);
 
+    List<IssueResponseDTO> getByEmployee(Integer id);
+
     Issue insert(IssueRequestDTO issue);
 
     Issue getById(Integer id);
