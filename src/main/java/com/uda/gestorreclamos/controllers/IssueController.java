@@ -41,6 +41,11 @@ public class IssueController {
         return ISSUE_SERVICE.getById(id);
     }
 
+    @GetMapping("/empleado/{id}")
+    public List<IssueResponseDTO> getByEmployeeId(@PathVariable Integer id) {
+        return ISSUE_SERVICE.getByEmployee(id);
+    }
+
     @PostMapping("")
     public Issue newIssue(@Valid @RequestBody IssueRequestDTO newIssue) {
         return ISSUE_SERVICE.insert(newIssue);

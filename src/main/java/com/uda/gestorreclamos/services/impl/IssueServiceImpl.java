@@ -41,6 +41,12 @@ public class IssueServiceImpl implements IssueService {
     }
 
     @Override
+    public List<IssueResponseDTO> getByEmployee(Integer id) {
+        List<Issue> issues = ISSUE_REPOSITORY.findByEmployeeId(id);
+        return issues.stream().map(issue -> IssueResponseDTO.toDto(issue)).collect(Collectors.toList());
+    }
+
+    @Override
     public Issue insert(IssueRequestDTO issueDto) {
         return ISSUE_REPOSITORY.save(IssueRequestDTO.toEntity(issueDto));
     }
@@ -53,9 +59,7 @@ public class IssueServiceImpl implements IssueService {
 
     @Override
     public Issue update(Integer id, IssueUpdateRequestDTO issueDto) throws Exception {
-
         Issue issue = getById(id);
-
         if(issue == null) {
             throw new Exception("El id de reclamo ingresado no existe");
         }
