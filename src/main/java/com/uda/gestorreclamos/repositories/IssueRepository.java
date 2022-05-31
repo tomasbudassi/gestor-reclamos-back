@@ -16,4 +16,5 @@ public interface IssueRepository extends CrudRepository<Issue, Integer> {
     List<Issue> findByEmployeeId(Integer id);
 
     List<Issue> findAll(Pageable pageable);
+
 }
