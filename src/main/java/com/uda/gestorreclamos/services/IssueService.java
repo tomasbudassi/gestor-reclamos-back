@@ -9,11 +9,13 @@ import java.util.List;
 
 public interface IssueService {
 
-    List<IssueResponseDTO> getAll();
+    List<IssueResponseDTO> getAll(int page, int size);
 
-    List<IssueResponseDTO> getAllWithoutCloses(String status);
+    List<IssueResponseDTO> getAllWithoutCloses(String status, int page, int size);
 
-    List<IssueResponseDTO> getByStatus(String status);
+    List<IssueResponseDTO> getByStatus(String status, int page, int size);
+
+    List<IssueResponseDTO> getByEmployee(Integer id);
 
     List<IssueResponseDTO> getByEmployee(Integer id);
 
