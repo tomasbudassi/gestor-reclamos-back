@@ -14,7 +14,7 @@
 	<name>gestor-reclamos</name>
 	<description>Gestion de Reclamos - Backend</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>8</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
