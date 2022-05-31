@@ -22,18 +22,22 @@ public class IssueController {
     private final IssueService ISSUE_SERVICE;
 
     @GetMapping("/todos")
-    public List<IssueResponseDTO> getAll() {
-        return ISSUE_SERVICE.getAll();
+    public List<IssueResponseDTO> getAll(@RequestParam(value = "page", required = false, defaultValue = "0") int page,
+                                         @RequestParam(value = "size", required = false, defaultValue = "100") int size) {
+        return ISSUE_SERVICE.getAll(page, size);
     }
 
     @GetMapping("")
-    public List<IssueResponseDTO> getAllWithoutCloses() {
-        return ISSUE_SERVICE.getAllWithoutCloses(STATUS_CERRADO);
+    public List<IssueResponseDTO> getAllWithoutCloses(@RequestParam(value = "page", required = false, defaultValue = "0") int page,
+                                                      @RequestParam(value = "size", required = false, defaultValue = "100") int size) {
+        return ISSUE_SERVICE.getAllWithoutCloses(STATUS_CERRADO, page, size);
     }
 
     @GetMapping("/estado/{status}")
-    public List<IssueResponseDTO> getByStatus(@PathVariable String status) {
-        return ISSUE_SERVICE.getByStatus(status);
+    public List<IssueResponseDTO> getByStatus(@PathVariable String status,
+                                              @RequestParam(value = "page", required = false, defaultValue = "0") int page,
+                                              @RequestParam(value = "size", required = false, defaultValue = "100") int size) {
+        return ISSUE_SERVICE.getByStatus(status, page, size);
     }
 
     @GetMapping("/{id}")
