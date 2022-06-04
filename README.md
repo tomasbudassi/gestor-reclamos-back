@@ -1,6 +1,6 @@
 ﻿# API Backend - Gestion de Reclamos
 
-## Endpoints
+## Endpoints Reclamos
 
 ### GET - Reclamos (Todos)
 ```
@@ -37,3 +37,31 @@
 /reclamos/{id}
 ```
 
+## Endpoints Empleado
+
+### GET - Empleado by Id
+```
+/empleados/{id}
+```
+
+### GET - Empleado (Todos)
+```
+/empleados
+```
+
+### POST - Login Empleado
+```
+/empleados/login
+```
+
+## Endpoints Tipo de Reclamo
+
+### GET - Tipos de Reclamo (Todos)
+```
+/tipos_reclamo
+```
+
+### GET - Tipos de Reclamo by Id
+```
+/tipos_reclamo/{id}
+```
