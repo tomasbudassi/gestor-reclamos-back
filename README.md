@@ -1,12 +1,17 @@
 ﻿# API Backend - Gestion de Reclamos
 ##Endpoints
 
-### GET - Reclamos (All)
+### GET - Reclamos (Todos)
 ```
 /reclamos/todos?page=0&size=10
 ```
 
-### GET - Reclamos by Id
+### GET - Reclamos (Todos menos reclamos cerrados)
+```
+/reclamos?page=0&size=10
+```
+
+### GET - Reclamo by Id
 ```
 /reclamos/{id}
 ```
