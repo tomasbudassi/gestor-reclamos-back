@@ -1,12 +1,10 @@
 package com.uda.gestorreclamos.controllers;
 
+import com.uda.gestorreclamos.dtos.EmployeeLoginDTO;
 import com.uda.gestorreclamos.models.Employee;
 import com.uda.gestorreclamos.services.EmployeeService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,4 +24,10 @@ public class EmployeeController {
     public Employee getById(@PathVariable Integer id) {
         return EMPLOYEE_SERVICE.getById(id);
     }
+
+    @PostMapping("/login")
+    public EmployeeLoginDTO login(@RequestBody EmployeeLoginDTO employeeDto) {
+        return EMPLOYEE_SERVICE.login(employeeDto);
+    }
+
 }
