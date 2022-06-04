@@ -24,7 +24,7 @@
 
 ### GET - Reclamos by Empleado
 ```
-/reclamos/empleado/1
+/reclamos/empleado/{id}
 ```
 
 ### POST - Crear Reclamo
