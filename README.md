@@ -37,6 +37,11 @@
 /reclamos/{id}
 ```
 
+### DELETE - Eliminar Reclamo
+```
+/reclamos/{id}
+```
+
 ## Endpoints Empleado
 
 ### GET - Empleado by Id
