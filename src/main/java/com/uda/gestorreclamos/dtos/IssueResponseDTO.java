@@ -25,6 +25,7 @@ public class IssueResponseDTO {
     private Employee employee;
     private String observation;
     private String creation_date;
+    private String imageUrl64;
 
     public static IssueResponseDTO toDto(Issue issue) {
         return IssueResponseDTO.builder()
@@ -37,6 +38,7 @@ public class IssueResponseDTO {
                 .employee(issue.getEmployee())
                 .observation(issue.getObservation())
                 .creation_date(issue.getCreation_date())
+                .imageUrl64(issue.getImageUrl64())
                 .build();
     }
 }
