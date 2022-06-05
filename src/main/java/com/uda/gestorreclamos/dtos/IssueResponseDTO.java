@@ -24,6 +24,7 @@ public class IssueResponseDTO {
     private IssueType issueType;
     private Employee employee;
     private String observation;
+    private String creation_date;
 
     public static IssueResponseDTO toDto(Issue issue) {
         return IssueResponseDTO.builder()
@@ -35,6 +36,7 @@ public class IssueResponseDTO {
                 .issueType(issue.getIssueType())
                 .employee(issue.getEmployee())
                 .observation(issue.getObservation())
+                .creation_date(issue.getCreation_date())
                 .build();
     }
 }

@@ -30,6 +30,8 @@ public class Issue {
 
     private String observation;
 
+    private String creation_date;
+
     @ManyToOne
     @JoinColumn(name = "type_id")
     @JsonIgnoreProperties("issues")

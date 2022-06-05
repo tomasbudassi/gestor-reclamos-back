@@ -10,6 +10,10 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 
 @Data
 @Builder
@@ -37,7 +41,13 @@ public class IssueRequestDTO {
 
     private String observation;
 
+    private String creation_date;
+
     public static Issue toEntity(IssueRequestDTO issueDto) {
+
+        ZoneId zid = ZoneId.of("America/Argentina/Mendoza");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
         return Issue.builder()
                 .status(issueDto.getStatus())
                 .description(issueDto.getDescription())
@@ -46,6 +56,7 @@ public class IssueRequestDTO {
                 .issueType(issueDto.getIssueType())
                 .employee(issueDto.getEmployee())
                 .observation(issueDto.getObservation())
+                .creation_date(LocalDate.now(zid).format(formatter))
                 .build();
     }
 }
