@@ -57,6 +57,7 @@ public class IssueRequestDTO {
                 .employee(issueDto.getEmployee())
                 .observation(issueDto.getObservation())
                 .creation_date(LocalDate.now(zid).format(formatter))
+                .imageUrl64(issueDto.getImageUrl64())
                 .build();
     }
 }
