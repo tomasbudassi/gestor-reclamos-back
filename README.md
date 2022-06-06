@@ -2,12 +2,12 @@
 
 ## Endpoints Reclamos
 
-### GET - Reclamos (Todos)
+### GET - Reclamos (Todos) - La paginación es opcional 
 ```
 /reclamos/todos?page=0&size=10
 ```
 
-### GET - Reclamos (Todos menos reclamos cerrados)
+### GET - Reclamos (Todos menos reclamos cerrados) - La paginación es opcional 
 ```
 /reclamos?page=0&size=10
 ```
@@ -17,7 +17,7 @@
 /reclamos/{id}
 ```
 
-### GET - Reclamos by Status
+### GET - Reclamos by Status - La paginación es opcional 
 ```
 /reclamos/estado/nuevo?page=0&size=10
 ```
