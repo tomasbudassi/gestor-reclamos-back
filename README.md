@@ -1,4 +1,4 @@
-﻿﻿# API Backend - Gestion de Reclamos
+# API Backend - Gestion de Reclamos
 
 ## Endpoints Reclamos
 
