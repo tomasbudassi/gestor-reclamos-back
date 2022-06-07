@@ -1,5 +1,6 @@
 package com.uda.gestorreclamos.controllers;
 
+import com.uda.gestorreclamos.dtos.IssuePaginatedResponseDTO;
 import com.uda.gestorreclamos.dtos.IssueRequestDTO;
 import com.uda.gestorreclamos.dtos.IssueResponseDTO;
 import com.uda.gestorreclamos.dtos.IssueUpdateRequestDTO;
@@ -22,19 +23,19 @@ public class IssueController {
     private final IssueService ISSUE_SERVICE;
 
     @GetMapping("/todos")
-    public List<IssueResponseDTO> getAll(@RequestParam(value = "page", required = false, defaultValue = "0") int page,
-                                         @RequestParam(value = "size", required = false, defaultValue = "100") int size) {
+    public IssuePaginatedResponseDTO getAll(@RequestParam(value = "page", required = false, defaultValue = "0") int page,
+                                            @RequestParam(value = "size", required = false, defaultValue = "100") int size) {
         return ISSUE_SERVICE.getAll(page, size);
     }
 
     @GetMapping("")
-    public List<IssueResponseDTO> getAllWithoutCloses(@RequestParam(value = "page", required = false, defaultValue = "0") int page,
+    public IssuePaginatedResponseDTO getAllWithoutCloses(@RequestParam(value = "page", required = false, defaultValue = "0") int page,
                                                       @RequestParam(value = "size", required = false, defaultValue = "100") int size) {
         return ISSUE_SERVICE.getAllWithoutCloses(STATUS_CERRADO, page, size);
     }
 
     @GetMapping("/estado/{status}")
-    public List<IssueResponseDTO> getByStatus(@PathVariable String status,
+    public IssuePaginatedResponseDTO getByStatus(@PathVariable String status,
                                               @RequestParam(value = "page", required = false, defaultValue = "0") int page,
                                               @RequestParam(value = "size", required = false, defaultValue = "100") int size) {
         return ISSUE_SERVICE.getByStatus(status, page, size);
@@ -46,8 +47,10 @@ public class IssueController {
     }
 
     @GetMapping("/empleado/{id}")
-    public List<IssueResponseDTO> getByEmployeeId(@PathVariable Integer id) {
-        return ISSUE_SERVICE.getByEmployee(id);
+    public IssuePaginatedResponseDTO getByEmployeeId(@PathVariable Integer id,
+                                                  @RequestParam(value = "page", required = false, defaultValue = "0") int page,
+                                                  @RequestParam(value = "size", required = false, defaultValue = "100") int size) {
+        return ISSUE_SERVICE.getByEmployee(id, page, size);
     }
 
     @PostMapping("")

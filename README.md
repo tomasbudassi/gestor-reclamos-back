@@ -1,13 +1,13 @@
-﻿# API Backend - Gestion de Reclamos
+﻿﻿# API Backend - Gestion de Reclamos
 
 ## Endpoints Reclamos
 
-### GET - Reclamos (Todos)
+### GET - Reclamos (Todos) - La paginación no es requerida
 ```
 /reclamos/todos?page=0&size=10
 ```
 
-### GET - Reclamos (Todos menos reclamos cerrados)
+### GET - Reclamos (Todos menos reclamos cerrados) - La paginación no es requerida
 ```
 /reclamos?page=0&size=10
 ```
@@ -17,14 +17,14 @@
 /reclamos/{id}
 ```
 
-### GET - Reclamos by Status
+### GET - Reclamos by Status - La paginación no es requerida
 ```
 /reclamos/estado/nuevo?page=0&size=10
 ```
 
-### GET - Reclamos by Empleado
+### GET - Reclamos by Empleado - La paginación no es requerida
 ```
-/reclamos/empleado/{id}
+/reclamos/empleado/{id}?page=0&size=10
 ```
 
 ### POST - Crear Reclamo
@@ -33,6 +33,11 @@
 ```
 
 ### UPDATE - Actualizar Reclamo
+```
+/reclamos/{id}
+```
+
+### DELETE - Eliminar Reclamo
 ```
 /reclamos/{id}
 ```
