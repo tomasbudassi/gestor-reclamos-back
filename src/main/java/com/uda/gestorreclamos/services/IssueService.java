@@ -1,21 +1,19 @@
 package com.uda.gestorreclamos.services;
 
+import com.uda.gestorreclamos.dtos.IssuePaginatedResponseDTO;
 import com.uda.gestorreclamos.dtos.IssueRequestDTO;
-import com.uda.gestorreclamos.dtos.IssueResponseDTO;
 import com.uda.gestorreclamos.dtos.IssueUpdateRequestDTO;
 import com.uda.gestorreclamos.models.Issue;
 
-import java.util.List;
-
 public interface IssueService {
 
-    List<IssueResponseDTO> getAll(int page, int size);
+    IssuePaginatedResponseDTO getAll(int page, int size);
 
-    List<IssueResponseDTO> getAllWithoutCloses(String status, int page, int size);
+    IssuePaginatedResponseDTO getAllWithoutCloses(String status, int page, int size);
 
-    List<IssueResponseDTO> getByStatus(String status, int page, int size);
+    IssuePaginatedResponseDTO getByStatus(String status, int page, int size);
 
-    List<IssueResponseDTO> getByEmployee(Integer id);
+    IssuePaginatedResponseDTO getByEmployee(Integer id, int page, int size);
 
     Issue insert(IssueRequestDTO issue);
 

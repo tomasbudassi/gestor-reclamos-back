@@ -1,5 +1,6 @@
 package com.uda.gestorreclamos.services.impl;
 
+import com.uda.gestorreclamos.dtos.IssuePaginatedResponseDTO;
 import com.uda.gestorreclamos.dtos.IssueRequestDTO;
 import com.uda.gestorreclamos.dtos.IssueResponseDTO;
 import com.uda.gestorreclamos.dtos.IssueUpdateRequestDTO;
@@ -9,6 +10,7 @@ import com.uda.gestorreclamos.repositories.IssueRepository;
 import com.uda.gestorreclamos.repositories.IssueTypeRepository;
 import com.uda.gestorreclamos.services.IssueService;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -25,36 +27,51 @@ public class IssueServiceImpl implements IssueService {
     private final EmployeeRepository EMPLOYEE_REPOSITORY;
 
     @Override
-    public List<IssueResponseDTO> getAll(int page, int size) {
+    public IssuePaginatedResponseDTO getAll(int page, int size) {
 
         Pageable pageable = PageRequest.of(page,size);
+        Page<Issue> issues = ISSUE_REPOSITORY.findAll(pageable);
 
-        List<Issue> issues = ISSUE_REPOSITORY.findAll(pageable);
-        return issues.stream().map(issue -> IssueResponseDTO.toDto(issue)).collect(Collectors.toList());
+        List<IssueResponseDTO> issuesResponseDto = issues.getContent().stream().map(
+                issue -> IssueResponseDTO.toDto(issue)).collect(Collectors.toList());
+
+        return new IssuePaginatedResponseDTO(issues.getTotalPages(), issuesResponseDto);
     }
 
     @Override
-    public List<IssueResponseDTO> getAllWithoutCloses(String status, int page, int size) {
+    public IssuePaginatedResponseDTO getAllWithoutCloses(String status, int page, int size) {
 
         Pageable pageable = PageRequest.of(page,size);
+        Page<Issue> issues = ISSUE_REPOSITORY.findByStatusNot(status, pageable);
 
-        List<Issue> issues = ISSUE_REPOSITORY.findByStatusNot(status, pageable);
-        return issues.stream().map(issue -> IssueResponseDTO.toDto(issue)).collect(Collectors.toList());
+        List<IssueResponseDTO> issuesResponseDto = issues.getContent().stream().map(
+                issue -> IssueResponseDTO.toDto(issue)).collect(Collectors.toList());
+
+        return new IssuePaginatedResponseDTO(issues.getTotalPages(), issuesResponseDto);
     }
 
     @Override
-    public List<IssueResponseDTO> getByStatus(String status, int page, int size) {
+    public IssuePaginatedResponseDTO getByStatus(String status, int page, int size) {
 
         Pageable pageable = PageRequest.of(page,size);
+        Page<Issue> issues = ISSUE_REPOSITORY.findByStatusContainsIgnoreCase(status, pageable);
 
-        List<Issue> issues = ISSUE_REPOSITORY.findByStatusContainsIgnoreCase(status, pageable);
-        return issues.stream().map(issue -> IssueResponseDTO.toDto(issue)).collect(Collectors.toList());
+        List<IssueResponseDTO> issuesResponseDto = issues.getContent().stream().map(
+                issue -> IssueResponseDTO.toDto(issue)).collect(Collectors.toList());
+
+        return new IssuePaginatedResponseDTO(issues.getTotalPages(), issuesResponseDto);
     }
 
     @Override
-    public List<IssueResponseDTO> getByEmployee(Integer id) {
-        List<Issue> issues = ISSUE_REPOSITORY.findByEmployeeId(id);
-        return issues.stream().map(issue -> IssueResponseDTO.toDto(issue)).collect(Collectors.toList());
+    public IssuePaginatedResponseDTO getByEmployee(Integer id, int page, int size) {
+
+        Pageable pageable = PageRequest.of(page,size);
+        Page<Issue> issues = ISSUE_REPOSITORY.findByEmployeeId(id, pageable);
+
+        List<IssueResponseDTO> issuesResponseDto = issues.getContent().stream().map(
+                issue -> IssueResponseDTO.toDto(issue)).collect(Collectors.toList());
+
+        return new IssuePaginatedResponseDTO(issues.getTotalPages(), issuesResponseDto);
     }
 
     @Override

@@ -1,4 +1,4 @@
-﻿# API Backend - Gestion de Reclamos
+﻿﻿# API Backend - Gestion de Reclamos
 
 ## Endpoints Reclamos
 
@@ -22,9 +22,9 @@
 /reclamos/estado/nuevo?page=0&size=10
 ```
 
-### GET - Reclamos by Empleado
+### GET - Reclamos by Empleado - La paginación no es requerida
 ```
-/reclamos/empleado/{id}
+/reclamos/empleado/{id}?page=0&size=10
 ```
 
 ### POST - Crear Reclamo
