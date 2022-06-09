@@ -49,7 +49,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         if(Objects.isNull(employee)) {
             throw new AccessControlException("Usuario o contraseña incorrecto");
         }
-        return new EmployeeLoginDTO(generateToken(employee.getUsername()));
+        return new EmployeeLoginDTO(employee.getId(), generateToken(employee.getUsername()));
     }
 
     private String generateToken(String username) {

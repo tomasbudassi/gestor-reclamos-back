@@ -2,7 +2,6 @@ package com.uda.gestorreclamos.controllers;
 
 import com.uda.gestorreclamos.dtos.IssuePaginatedResponseDTO;
 import com.uda.gestorreclamos.dtos.IssueRequestDTO;
-import com.uda.gestorreclamos.dtos.IssueResponseDTO;
 import com.uda.gestorreclamos.dtos.IssueUpdateRequestDTO;
 import com.uda.gestorreclamos.models.Issue;
 import com.uda.gestorreclamos.services.IssueService;
@@ -11,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 import static com.uda.gestorreclamos.utils.Constants.STATUS_CERRADO;
 
