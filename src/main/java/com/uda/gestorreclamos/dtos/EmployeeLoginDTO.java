@@ -14,10 +14,8 @@ public class EmployeeLoginDTO {
     private Integer id;
     private String username;
     private String password;
+    private String name;
+    private String lastname;
+    private String type;
     private String token;
-
-    public EmployeeLoginDTO(Integer id, String token) {
-        this.id = id;
-        this.token = token;
-    }
 }
